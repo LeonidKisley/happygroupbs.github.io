@@ -1,0 +1,378 @@
+
+
+/* Centrar todo vertical y horizontalmente */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(100deg, #000000, #00000020),
+		url('img/FondoBarbería.png');
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;         /* altura de toda la ventana */
+  width: 80vw;          /* ancho de toda la ventana */
+  position: relative;    /* necesario si usas position absoluta en hijos */
+  overflow: hidden;
+}
+.register-container {
+  height: 40vw;
+  width: 10vw;
+  min-width: 320px;
+  background-color: rgba(65, 22, 219, 0.9);
+  padding: 2.5rem 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 8px 30px rgba(65, 22, 219, 0.4);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 5;
+  
+
+  /** ✅ Línea blanca alrededor **/
+  border: 2px solid #fff;
+}
+
+.register-container label {
+  font-weight: 700;       /* negrita */
+  margin-bottom: 0.4rem;  /* espacio debajo del label */
+  display: block;         /* para que margin-bottom funcione bien */
+}
+
+.register-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;          /* Centra el texto */
+  color: #fff;
+  display: block;              /* Ya no uses flex */
+}
+
+.register-container::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px solid #fff; /* Línea blanca interna */
+  border-radius: 1.5rem;   /* Coincide con el border-radius del contenedor */
+  pointer-events: none;    /* No interfiere con clics o inputs */
+  z-index: 1;
+}
+
+.register-container h2 i {
+  font-size: 3.2rem;   /* Aumenta el tamaño del ícono */
+  margin-top: 2.3rem;    /* Lo baja un poco más */
+  display: inline-block;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.register-container input[type="text"],
+.register-container input[type="password"] {
+  padding: 1rem 1.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  font-size: 1.2rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  height: 0.5rem; /* ajusta este valor a tu preferencia */
+  
+}
+
+.register-container input[type="text"]:focus,
+.register-container input[type="password"]:focus {
+  box-shadow: 0 0 10px #fff;
+}
+
+
+.register-container button {
+  display: block;
+  width: 200px;
+  margin: 1.5rem auto 0;   /* centrado horizontal con margen superior */
+  padding: 0.6rem 1.5rem; 
+  font-size: 1.2rem;     /* tamaño de letra reducido */
+  height: 3rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #400ccf;  /* para que coincida con .btn-submit */
+  color: #f9f9fc;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.register-container button:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
+.btn-submit:hover {
+  background-color: #e0dee7;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.small-text {
+  font-size: 1.2rem;
+  color: #ddd;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-buttons button {
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 1.5rem;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: -2.6rem;
+  display: inline-flex;         /* inline-flex para mantener tamaño natural */
+  align-items: center;          /* centrar verticalmente */
+  justify-content: center;      /* centrar horizontalmente */
+  gap: 0.6rem;
+  width: 130px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  min-width: 90px;             /* un ancho mínimo para que se vean uniformes */
+  text-align: center;
+}
+
+.social-buttons button i {
+  font-size: 1.4rem;
+}
+
+.social-buttons button:hover {
+  background-color: #fff;
+  color: #4116db;
+  border-color: #4116db;
+}
+
+.switch-login {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-top: 0rem;
+}
+
+.switch-login a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.switch-login a:hover {
+  color: #ddd;
+}
+
+/***********************/
+/***********************/
+/***********************/
+/***********************/
+/***********************/
+/***********************/
+/***********************/
+/***********************/
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 80vw;
+  padding-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container {
+  height: 35vw;
+  width: 10vw;
+  margin-top: -20px; 
+  min-width: 320px;
+  background-color: rgba(65, 22, 219, 0.9);
+  padding: 2.5rem 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 8px 30px rgba(65, 22, 219, 0.4);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 5;
+  border: 2px solid #fff;
+}
+
+
+.login-container > * {
+  margin-top: -20px; /* sube todos los hijos directos del contenedor */
+}
+
+.login-container label {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: block;
+  text-transform: capitalize;
+}
+
+.login-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+  display: block;
+}
+
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px solid #fff;
+  border-radius: 1.5rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-container h2 i {
+  font-size: 3.2rem;
+  margin-top: 2.3rem;
+  display: inline-block;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  padding: 1rem 1.5rem;
+  border-radius: 1.5rem;
+  border: none;
+  font-size: 1.2rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  height: 1.5rem;
+  text-transform: none;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+  box-shadow: 0 0 10px #fff;
+}
+
+.login-container button {
+  display: block;
+  width: 200px;
+  margin: 1.5rem auto 0;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.2rem;
+  height: 3rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #4116db;
+  color: #f9f9fc;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.login-container button:hover {
+  background-color: #3111aa;
+  transform: scale(1.05);
+}
+
+.small-text {
+  font-size: 1rem;
+  color: #ddd;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-buttons button {
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 1.5rem;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 130px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  min-width: 90px;
+  text-align: center;
+}
+
+.social-buttons button i {
+  font-size: 1.4rem;
+}
+
+.social-buttons button:hover {
+  background-color: #fff;
+  color: #4116db;
+  border-color: #4116db;
+}
+
+.switch-register {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #ddd;
+  margin-top: -1rem;
+}
+
+.switch-register a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.switch-register a:hover {
+  color: #ddd;
+}

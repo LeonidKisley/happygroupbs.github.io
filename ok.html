@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Confirmación de Reserva</title>
+
+
+  <style>
+     *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(100deg, #000000, #00000020), url('img/FondoBarbería.png');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+
+  width: 100%;
+  overflow-x: hidden;
+  /* Quitar el transform */
+  /* transform: scale(0.8); */
+  /* transform-origin: top center; */
+}
+
+.confirm-container {
+  background-color: rgba(65, 22, 219, 0.9);
+  padding: 1.5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 8px 30px rgba(65, 22, 219, 0.4);
+  max-width: 380px;
+  margin: 2rem auto; /* Centrar y dar espacio arriba */
+  margin-bottom: 0.2rem;  /* espacio pequeño abajo para reducir la separación */
+  margin-left: auto;
+  margin-right: 0.5;
+  text-align: center;
+  position: relative;
+  top: 10px;
+  font-size: 1rem;
+}
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .info-group {
+      text-align: left;
+      margin: 0.5rem 0;
+    }
+
+    .info-label {
+      font-weight: 700;
+      color: #ddd;
+    }
+
+    .info-value {
+      margin-left: 0.5rem;
+      color: #fff;
+    }
+
+    .payment-section {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #3a36db;
+      border-radius: 1rem;
+      text-align: left;
+    }
+
+    .payment-section p {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 0.7rem 0 0.3rem;
+      font-weight: 600;
+      color: #ddd;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="month"],
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 1rem;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    button.confirm-btn {
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 2rem;
+      border: none;
+      background-color: #4116db;
+      color: #f9f9fc;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+
+    button.confirm-btn:hover {
+      background-color: #3111aa;
+      transform: scale(1.05);
+    }
+
+    /* Estilo para el contenedor del QR */
+    .qr-container {
+      margin-top: 1rem;
+      background: #3a36db;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+
+    .qr-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Input nombre para Yape */
+    .yape-name-input {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .yape-name-input label {
+      margin-bottom: 0.3rem;
+      display: block;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    .yape-name-input input {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 1rem;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      color: #000;
+    }
+.mensaje-pago {
+  margin-bottom: 1.5rem; /* espacio entre el texto y la imagen */
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.banner-imagen {
+  width: 100%;
+  max-height: 200px; /* Puedes ajustar el tamaño */
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: -20rem; /* Hace que el texto suba superponiéndose si hace falta */
+}
+
+.mensaje-pago {
+  width: 80%;
+  position: relative;
+  top: -24rem; /* Sube el texto */
+  background-color: rgba(65, 22, 219, 0.9);
+  color: #fff;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 4px 12px rgba(65, 22, 219, 0.4);
+  margin-bottom: 2rem;
+  margin-top: 17rem;
+  margin-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+.contenedor-imagen {
+  width: 10%;
+  text-align: center;
+  margin-bottom: -2rem; /* ajusta la superposición con .mensaje-pago si es necesario */
+  z-index: 2;
+  position: relative;
+  left: 10px;
+}
+
+.contenedor-imagen img {
+  max-width: 120px;
+  height: auto;
+  position: relative;
+  
+}
+
+
+
+.imagen-superior {
+  width: 450px;   /* Ajusta según lo que necesites */
+  height: auto;
+  margin-top: 10rem;
+  margin-left: 10rem;
+  position: relative;
+  top: 10px;
+  z-index: 10;
+}
+
+/* FOOTER GENERAL */
+.footer {
+	background-color: #4116db;
+	color: #fff;
+	width: 100%;
+	font-size: 0.85rem; /* Reducción general de texto */
+}
+
+.container-footer {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 1.5rem 1rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* GRID DE CUATRO COLUMNAS */
+.menu-footer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr) 20rem; /* más pequeño */
+	gap: 2rem;
+	justify-items: center;
+}
+
+.title-footer {
+	font-weight: 600;
+	font-size: 1.2rem; /* reducido */
+	text-transform: uppercase;
+}
+
+/* SECCIONES DEL FOOTER */
+.contact-info,
+.information,
+.my-account,
+.newsletter {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+}
+
+.contact-info ul,
+.information ul,
+.my-account ul {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	padding-left: 0;
+	margin: 0;
+}
+
+.contact-info ul li,
+.information ul li,
+.my-account ul li {
+	list-style: none;
+	font-size: 1rem; /* reducido */
+	font-weight: 300;
+}
+
+.information ul li a,
+.my-account ul li a {
+	text-decoration: none;
+	color: #fff;
+	font-weight: 300;
+	transition: color 0.3s;
+}
+
+.information ul li a:hover,
+.my-account ul li a:hover {
+	color: #d2b495;
+}
+
+/* ICONOS DE REDES SOCIALES */
+.social-icons {
+	display: flex;
+	gap: 1rem;
+}
+
+.social-icons span {
+	border-radius: 50%;
+	width: 2.4rem; /* reducido */
+	height: 2.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-icons span i {
+	color: #fff;
+	font-size: 1rem; /* reducido */
+}
+
+.facebook { background-color: #3b5998; }
+.twitter { background-color: #00acee; }
+.youtube { background-color: #c4302b; }
+.pinterest { background-color: #c8232c; }
+.instagram {
+	background: linear-gradient(
+		#405de6,
+		#833ab4,
+		#c13584,
+		#e1306c,
+		#fd1d1d,
+		#f56040,
+		#fcaf45
+	);
+}
+
+/* NEWSLETTER */
+.content p {
+	font-size: 1rem;
+	font-weight: 300;
+	margin: 0;
+}
+
+.content input {
+	outline: none;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #d2b495;
+	cursor: pointer;
+	padding: 0.3rem 0 0.8rem;
+	color: #fff;
+	margin-bottom: 2rem;
+	margin-top: 1.2rem;
+	width: 100%;
+	font-family: inherit;
+	font-size: 0.9rem;
+}
+
+.content input::placeholder {
+	color: #eee;
+	font-size: 0.9rem;
+}
+
+.content button {
+	border: none;
+	background-color: #000;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 0.6rem 2rem;
+	border-radius: 1.5rem;
+	font-size: 1rem;
+	font-family: inherit;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.content button:hover {
+	background-color: #fff;
+	color: #4116db;
+}
+
+/* PARTE INFERIOR (COPYRIGHT Y MÉTODOS DE PAGO) */
+.copyright {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 1.5rem;
+	border-top: 1px solid #d2b495;
+	flex-wrap: wrap;
+}
+
+.copyright p {
+	font-weight: 400;
+	font-size: 1rem;
+	margin: 0;
+}
+
+.payment-img {
+	height: 24px; /* más pequeño */
+	object-fit: contain;
+}
+
+
+.slot.reservado {
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+  </style>
+</head>
+<body>
+    <div class="contenedor-mensaje">
+      <img src="img/Persona sobresaliendo.png" alt="Confirmación de pago" class="imagen-superior">
+      <div class="mensaje-pago">
+        <h2>Estimado Cliente recuerda...</h2>
+        Es necesario realizar un pago de <strong>10 soles</strong> para confirmar su cita.
+  </div>
+</div>
+  <!-- Contenedor 1: Reserva + pago -->
+<div class="confirm-container">
+  <h2>Pago con Targeta</h2>
+
+  <div class="info-group">
+    <span class="info-label">Nombre:</span>
+    <span class="info-value" id="nombre1">Cargando...</span>
+  </div>
+
+  <div class="info-group">
+    <span class="info-label">Día de la cita:</span>
+    <span class="info-value" id="fecha">Cargando...</span>
+  </div>
+
+  <div class="info-group">
+    <span class="info-label">Hora:</span>
+    <span class="info-value" id="hora">Cargando...</span>
+  </div>
+
+  <div class="payment-section">
+    <p>Monto a pagar: <strong>10 soles</strong></p>
+
+    <!-- INICIA FORMULARIO -->
+    <form id="paymentForm">
+      <label for="cardName">Nombre en la tarjeta</label>
+      <input type="text" id="cardName" placeholder="Ingrese el nombre del titular" required />
+
+      <label for="cardNumber">Número de tarjeta</label>
+      <input type="text"
+             id="cardNumber"
+             placeholder="XXXX-XXXX-XXXX-XXXX"
+             maxlength="19"
+             required
+             oninput="formatCardNumber(this)"
+             onkeypress="return /[0-9]/.test(event.key)" />
+
+      <label for="expiryDate">Fecha de expiración</label>
+      <input type="month" id="expiryDate" required />
+
+      <label for="cvv">CVV</label>
+      <input type="number" id="cvv" placeholder="123" maxlength="3" min="100" max="999" required />
+
+      <!-- BOTÓN DENTRO DEL FORM -->
+      <button type="submit" class="confirm-btn">Confirmar pago y reserva</button>
+    </form>
+    <!-- TERMINA FORMULARIO -->
+
+    <script>
+      function formatCardNumber(input) {
+        let value = input.value.replace(/\D/g, ''); // Solo dígitos
+        if (value.length > 16) value = value.slice(0, 16); // Máximo 16 dígitos
+        const parts = value.match(/.{1,4}/g);
+        input.value = parts ? parts.join('-') : '';
+      }
+    </script>
+  </div>
+</div>
+
+<!-- Contenedor 2: Nombre + input + QR Yape -->
+<div class="confirm-container">
+  <h2>Yape</h2>
+  <p>Escaneé el QR para realizar el pago</p>
+
+  <div class="info-group">
+    <span class="info-label">Nombre:</span>
+    <span class="info-value" id="nombre2">Cargando...</span>
+  </div>
+
+  <div class="yape-name-input">
+    <label for="yapeNombre">Ingrese su nombre para Yape</label>
+    <input type="text" id="yapeNombre" placeholder="Nombre para Yape" />
+  </div>
+
+  <div class="qr-container">
+    <img src="img/QR.png" alt="QR Yape" />
+  </div>
+</div>
+
+<script>
+  // Cargar datos del localStorage para ambos contenedores
+  const nombreUsuario = localStorage.getItem('nombreUsuario') || 'No ingresado';
+  document.getElementById('nombre1').textContent = nombreUsuario;
+  document.getElementById('nombre2').textContent = nombreUsuario;
+
+  // Mostrar la fecha tal cual está guardada en localStorage
+  const fechaRaw = localStorage.getItem('fechaCita');
+  if (fechaRaw) {
+    document.getElementById('fecha').textContent = fechaRaw;
+  } else {
+    document.getElementById('fecha').textContent = 'No seleccionada';
+  }
+  document.getElementById('hora').textContent = localStorage.getItem('horaCita') || 'No seleccionada';
+
+  // Manejar el submit del formulario
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    alert('¡Pago realizado y reserva confirmada!\nGracias por confiar en nosotros.');
+
+    // Limpiar solo los datos temporales
+    localStorage.removeItem('nombreUsuario');
+    localStorage.removeItem('fechaCita');
+    localStorage.removeItem('horaCita');
+
+    // Redirigir al sector "Agendar tu cita" en index.html
+    window.location.href = 'index.html#reserva-form';
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nombre = localStorage.getItem('nombreUsuario') || 'Invitado';
+    const dia = localStorage.getItem('fechaCita');
+    const hora = localStorage.getItem('horaCita');
+
+    // Mostrar datos en pantalla
+    document.getElementById('nombre1').textContent = nombre;
+    document.getElementById('fecha').textContent = dia;
+    document.getElementById('hora').textContent = hora;
+
+    const form = document.getElementById('paymentForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Evitar recarga
+
+      // Obtener reservas anteriores
+      let reservas = JSON.parse(localStorage.getItem('reservas')) || [];
+
+      // Verificar si ya está reservada (doble protección)
+      const yaReservado = reservas.some(r => r.dia === dia && r.hora === hora);
+      if (!yaReservado) {
+        reservas.push({ dia, hora });
+        localStorage.setItem('reservas', JSON.stringify(reservas));
+      }
+
+      // Eliminar datos temporales
+      localStorage.removeItem('ultimaReserva');
+      localStorage.removeItem('seleccionTurno');
+
+      // Redirigir al mensaje final
+      window.location.href = 'index.html'; // ✅ Crea una página final de éxito si deseas
+    });
+  });
+</script>
+
+
+
+<footer class="footer">
+  <div class="container-footer">
+    <div class="menu-footer">
+
+      <!-- Contacto -->
+      <div class="contact-info">
+        <p class="title-footer">Información de Contacto</p>
+        <ul>
+          <li>📍 Av. Calmell del Solar 1980, Huancayo, Perú</li>
+          <li>📞 900-070-069</li>
+          <li>📠 Fax: 55555300</li>
+          <li>✉ Happygroup@gmail.com</li>
+        </ul>
+        <div class="social-icons">
+          <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
+          <span class="twitter"><i class="fa-brands fa-twitter"></i></span>
+          <span class="youtube"><i class="fa-brands fa-youtube"></i></span>
+          <span class="pinterest"><i class="fa-brands fa-pinterest-p"></i></span>
+          <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+
+      <!-- Información -->
+      <div class="information">
+        <p class="title-footer">Información</p>
+        <ul>
+          <li><a href="#">Sobre la Barbería</a></li>
+          <li><a href="#">Nuestros Servicios</a></li>
+          <li><a href="#">Políticas de Privacidad</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <!-- Cuenta -->
+      <div class="my-account">
+        <p class="title-footer">Mi Cuenta</p>
+        <ul>
+          <li><a href="#">Mi Perfil</a></li>
+          <li><a href="#">Historial de Citas</a></li>
+          <li><a href="#">Favoritos</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Reembolsos</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="newsletter">
+        <p class="title-footer">Boletín Informativo</p>
+        <div class="content">
+          <p>Se miembro y recibe tips de cuidado personal y promociones exclusivas.</p>
+          <input type="email" placeholder="Tu correo...">
+          <button>Ser miembro</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      <p>Desarrollado por Barbería Estilo &copy; 2025</p>
+      <img src="img/payment.png" alt="Métodos de pago" class="payment-img">
+    </div>
+  </div>
+</footer>
+
+     <script src="https://kit.fontawesome.com/81581fb069.js" 
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
+
+
